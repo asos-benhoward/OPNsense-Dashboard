@@ -41,7 +41,7 @@ You will need to have Docker and Docker Compose installed on a server that will 
 
 After you've installed Docker and Docker Compose, download the docker-compose.yaml from this repo.
 
-`curl https://raw.githubusercontent.com/bsmithio/OPNsense-Dashboard/master/docker-compose.yaml -o docker-compose.yaml`
+`curl https://raw.githubusercontent.com/asos-benhoward/OPNsense-Dashboard/refs/heads/mods/docker-compose.yaml -o docker-compose.yaml`
 
 It's important that you change the TZ environment variable to your timezone for everything to work properly.
 I also recommend you change the passwords in this compose file as well.
@@ -120,18 +120,18 @@ Add the  [custom.conf](./config/custom.conf) telegraf config to /usr/local/etc/t
 sudo mkdir /usr/local/etc/telegraf.d
 sudo chown telegraf:telegraf /usr/local/etc/telegraf.d
 sudo chmod 750 /usr/local/etc/telegraf.d
-sudo curl https://raw.githubusercontent.com/bsmithio/OPNsense-Dashboard/master/config/custom.conf -o /usr/local/etc/telegraf.d/custom.conf
+sudo curl https://raw.githubusercontent.com/asos-benhoward/OPNsense-Dashboard/refs/heads/mods/config/custom.conf -o /usr/local/etc/telegraf.d/custom.conf
 ```
 
 ### Telegraf Plugins
 
 **Plugins must be copied to your OPNsense system**
 
-Place [telegraf_pfifgw.php](https://raw.githubusercontent.com/bsmithio/OPNsense-Dashboard/master/plugins/telegraf_pfifgw.php) and [telegraf_temperature.sh](https://raw.githubusercontent.com/bsmithio/OPNsense-Dashboard/master/plugins/telegraf_temperature.sh) in /usr/local/bin and chmod them to 755.
+Place [telegraf_pfifgw.php](https://raw.githubusercontent.com/asos-benhoward/OPNsense-Dashboard/refs/heads/mods/plugins/telegraf_pfifgw.php) and [telegraf_temperature.sh](https://raw.githubusercontent.com/asos-benhoward/OPNsense-Dashboard/refs/heads/mods/plugins/telegraf_temperature.sh) in /usr/local/bin and chmod them to 755.
 
 ```
-curl "https://raw.githubusercontent.com/bsmithio/OPNsense-Dashboard/master/plugins/telegraf_pfifgw.php" -o /usr/local/bin/telegraf_pfifgw.php
-curl "https://raw.githubusercontent.com/bsmithio/OPNsense-Dashboard/master/plugins/telegraf_temperature.sh" -o /usr/local/bin/telegraf_temperature.sh
+curl "https://raw.githubusercontent.com/asos-benhoward/OPNsense-Dashboard/refs/heads/mods/plugins/telegraf_pfifgw.php" -o /usr/local/bin/telegraf_pfifgw.php
+curl "https://raw.githubusercontent.com/asos-benhoward/OPNsense-Dashboard/refs/heads/mods/plugins/telegraf_temperature.sh" -o /usr/local/bin/telegraf_temperature.sh
 chmod 755 /usr/local/bin/telegraf_temperature.sh /usr/local/bin/telegraf_pfifgw.php
 ```
 
@@ -175,7 +175,7 @@ For Graylog, it's recommended to create an index set. To do so, navigate to Syst
 
 ![Graylog Index Set](https://www.bsmithio.com/post/opnsense-dashboard/indexset.png)
 
-Once that's done, download the [content pack](https://raw.githubusercontent.com/bsmithio/OPNsense-Dashboard/master/config/OPNsense-pack.json) and install it on Graylog by navigating to System -> Content Packs -> Upload, choose the pack, Upload, then Install.
+Once that's done, download the [content pack](https://raw.githubusercontent.com/asos-benhoward/OPNsense-Dashboard/refs/heads/mods/config/OPNsense-pack.json) and install it on Graylog by navigating to System -> Content Packs -> Upload, choose the pack, Upload, then Install.
 
 Now, add your index set from earlier to the "OPNsense / filterlog" stream. Navigate to Streams -> More Actions -> Edit Stream -> select your index set and save.
 
@@ -227,7 +227,7 @@ Version: 7.10+
 
 ### Import Dashboard
 
-To import the dashboard, copy the JSON from [OPNsense-Grafana-Dashboard.json](https://raw.githubusercontent.com/bsmithio/OPNsense-Dashboard/master/OPNsense-Grafana-Dashboard.json) and navigate to Dashboards -> Browse -> Import and paste under Import via panel json.
+To import the dashboard, copy the JSON from [OPNsense-Grafana-Dashboard.json](https://raw.githubusercontent.com/asos-benhoward/OPNsense-Dashboard/refs/heads/mods/OPNsense-Grafana-Dashboard.json) and navigate to Dashboards -> Browse -> Import and paste under Import via panel json.
 
 ### Configure Variables
 
@@ -253,13 +253,13 @@ This section assumes you have already configured Suricata.
 Add [suricata.conf](./config/suricata/suricata.conf) to /usr/local/etc/telegraf.d
 
 ```
-sudo curl 'https://raw.githubusercontent.com/bsmithio/OPNsense-Dashboard/master/config/suricata/suricata.conf' -o /usr/local/etc/telegraf.d/suricata.conf
+sudo curl 'https://raw.githubusercontent.com/asos-benhoward/OPNsense-Dashboard/refs/heads/mods/config/suricata/suricata.conf' -o /usr/local/etc/telegraf.d/suricata.conf
 ```
 
 Add [custom.yaml](./config/suricata/custom.yaml) to /usr/local/opnsense/service/templates/OPNsense/IDS
 
 ```
-sudo curl 'https://raw.githubusercontent.com/bsmithio/OPNsense-Dashboard/master/config/suricata/custom.yaml' -o /usr/local/opnsense/service/templates/OPNsense/IDS/custom.yaml
+sudo curl 'https://raw.githubusercontent.com/asos-benhoward/OPNsense-Dashboard/refs/heads/mods/config/suricata/custom.yaml' -o /usr/local/opnsense/service/templates/OPNsense/IDS/custom.yaml
 ```
 
 Create the log file and give telegraf permissions to read it
@@ -284,7 +284,7 @@ Restart telegraf by running
 
 ### Import the Suricata Dashboard
 
-To import the dashboard, copy the JSON from [OPNsense-Grafana-Dashboard-Suricata.json](https://raw.githubusercontent.com/bsmithio/OPNsense-Dashboard/master/OPNsense-Grafana-Dashboard-Suricata.json) and navigate to Dashboards -> Browse -> Import and paste under Import via panel json.
+To import the dashboard, copy the JSON from [OPNsense-Grafana-Dashboard-Suricata.json](https://raw.githubusercontent.com/asos-benhoward/OPNsense-Dashboard/refs/heads/mods/OPNsense-Grafana-Dashboard-Suricata.json) and navigate to Dashboards -> Browse -> Import and paste under Import via panel json.
 
 ## Troubleshooting
 

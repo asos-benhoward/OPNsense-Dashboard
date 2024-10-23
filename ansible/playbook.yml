@@ -39,7 +39,7 @@
 
   - name: Download telegraf config
     get_url:
-      url: https://raw.githubusercontent.com/bsmithio/OPNsense-Dashboard/master/config/custom.conf
+      url: https://raw.githubusercontent.com/asos-benhoward/OPNsense-Dashboard/refs/heads/mods/config/custom.conf
       dest: /usr/local/etc/telegraf.d/custom.conf
       mode: '0644'
 
@@ -57,13 +57,13 @@
 
   - name: Download Suricata.conf
     get_url:
-      url: https://raw.githubusercontent.com/bsmithio/OPNsense-Dashboard/master/config/suricata/suricata.conf
+      url: https://raw.githubusercontent.com/asos-benhoward/OPNsense-Dashboard/refs/heads/mods/config/suricata/suricata.conf
       dest: /usr/local/etc/telegraf.d/suricata.conf
       mode: '0644'
 
   - name: Download suricata custom.yaml
     get_url:
-      url: https://raw.githubusercontent.com/bsmithio/OPNsense-Dashboard/master/config/suricata/custom.yaml
+      url: https://raw.githubusercontent.com/asos-benhoward/OPNsense-Dashboard/refs/heads/mods/config/suricata/custom.yaml
       dest: /usr/local/opnsense/service/templates/OPNsense/IDS/custom.yaml
       mode: '0644'
 
